@@ -124,9 +124,9 @@ function completeOrder(paid) {
 		if ($(this).find('.number').val() != '') {
 			var thisItem = new Item();
 
-			thisItem.number = $(this).find('.number');
-			thisItem.quantity = $(this).find('.quantity');
-			thisItem.price = $(this).find('.price');
+			thisItem.number = $(this).find('.number').val();
+			thisItem.quantity = $(this).find('.quantity').val();
+			thisItem.price = $(this).find('.price').val();
 
 			thisOrder.items.push(thisItem);
 
@@ -144,14 +144,16 @@ function completeOrder(paid) {
 
 	// Grab customer information
 	thisOrder.customerName = $('#customerName').val();
-	thisOrder.customerAddr = $('customerAddr').val();
-	thisOrder.customerPhone = $('customerPhone').val();
-	thisOrder.orderType = $('orderType').val();
+	thisOrder.customerAddr = $('#customerAddr').val();
+	thisOrder.customerPhone = $('#customerPhone').val();
+	thisOrder.orderType = $('#orderType').val();
 	thisOrder.paid = paid;
 
 	// Persist order in DB
 	var data = 'order=' + JSON.stringify(thisOrder);
-	$.post('persist.php', data);
+	$.post('neworder.php', data, function(result) {
+		alert(result);
+	});
 
 	// Clean up for next order
 	clearAll();
@@ -199,5 +201,4 @@ function manage(oid) {
 		$('#manage-table tbody').load("persist.php?manage=true&oid=" + oid);
 		$('#manage-table').attr('order', oid);
 	}, 10);
-
 }

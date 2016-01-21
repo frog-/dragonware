@@ -2,38 +2,6 @@
 
 require_once "login.php";
 
-if (isset($_POST["order"])) {
-	$order = json_decode($_POST["order"]);
-
-	$query = "INSERT INTO Orders VALUES ( NULL, " .
-		" '$order->customerName', " .
-		" '$order->customerAddr', " .
-		" '$order->customerPhone', " .
-		" '$order->orderType', " .
-		" now(), " .
-		" '$order->paid', " .
-		" '0' )";
-
-	$result = $conn->query($query);
-	if (!$result) die ($conn->error);
-
-	$query = "SELECT MAX(oid) FROM Orders";
-	$result = $conn->query($query);
-	if (!$result) die ($conn->error);
-	$oid = $result->fetch_array()[0];
-
-	foreach ($order->items as $item) {
-		$query = "INSERT INTO Order_items VALUES ( NULL, " .
-			" '$oid', " .
-			" '$item->number', " .
-			" '$item->quantity', " .
-			" '$item->price' ) ";
-
-		$result = $conn->query($query);
-		if (!$result) die($conn->error);
-	}
-}
-
 if (isset($_GET["findopen"])) {
 	$query = "SELECT * FROM Orders WHERE complete = '0' ORDER BY time";
 	$result = $conn->query($query);
