@@ -1,0 +1,77 @@
+<h1>New Order</h1>
+<table class="table">
+	<tr>
+		<th>Customer Info</th>
+		<th>Order Type</th>
+	</tr>
+	<tr>
+		<td>
+			<input id="customerName" type="text" placeholder="Name">
+		</td>
+		<td>
+			<select id="orderType" name="type">
+				<option value="0">Pickup (Phone)</option>
+				<option value="1">Pickup (In store)</option>
+				<option value="2">Delivery</option>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<input id="customerPhone" type="text" placeholder="Phone Number">
+		</td>
+		<td>
+			<input id="customerAddr" type="text" placeholder="Address">
+		</td>
+	</tr>
+</table>
+<br>
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th class="num">Qnt.</th>
+			<th class="num">Itm #</th>
+			<th>Item Name</th>
+			<th class="num">Price</th>
+			<th>Drop</th>
+		</tr>
+	</thead>
+	<tbody id="item-list"></tbody>
+	<tfoot>
+		<tr name="rown">
+			<td>
+				<button name="addrow" id="plusbut" class="add-btn">&nbsp;+&nbsp;</button>
+			</td>
+			<td colspan="4"><em>Click + to add new item</em></td>
+		<tr>
+			<td colspan="2"></td>
+			<td id="createorder">
+				<button name="payprint">Pay & Complete</button>
+				<button name="print">Complete</button>
+			</td>
+			<td id="totalPrice">$0.00</td>
+			<td>
+				<button id="dropall" class="drop-btn">&nbsp;X&nbsp;</button>
+			</td>
+		</tr>
+	</tfoot>
+</table>
+
+<script>
+// Add initial row
+addRow();
+
+// Create 'new row' button
+$('#plusbut').on('click', addRow);
+
+// Create 'drop all' button
+$('#dropall').on('click', clearAll);
+
+// Create 'complete order' button
+$('#createorder').on('click', function(e) {
+	// Check if the order was paid or not
+	var paid = (e.target.name == "payprint");
+
+	completeOrder(paid);
+	populateOrders();
+});
+</script>

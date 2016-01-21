@@ -1,0 +1,40 @@
+table.bump-down {
+	margin: 50px auto 0px auto;
+}
+
+#newbut {
+  position: relative;
+  bottom: 45px;
+}
+
+.drop-btn {
+  -webkit-border-radius: 60;
+  -moz-border-radius: 60;
+  border-radius: 60px;
+  font-family: Arial;
+  color: #000000;
+  font-size: 14px;
+  background: #d93434;
+  padding: 2px 4px 2px 4px;
+  text-decoration: none;
+}
+
+.add-btn {
+  -webkit-border-radius: 60;
+  -moz-border-radius: 60;
+  border-radius: 60px;
+  font-family: Arial;
+  color: #000000;
+  font-size: 14px;
+  background: #28c748;
+  padding: 2px 4px 2px 4px;
+  text-decoration: none;
+}
+
+.paid {
+  color: green;
+}
+
+.notpaid {
+  color: red;
+}

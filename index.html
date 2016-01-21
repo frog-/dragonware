@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+		<link rel="stylesheet" href="my.css" type="text/css">
+		
+		<title>
+			DragonWare jQuery
+		</title>
+	</head>
+	<body>
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-5 static">
+					<h1>Open Orders</h1>
+					<button id="newbut" class="btn btn-success pull-right">Create new order</button>
+					<table class="table table-striped">
+						<thead>
+							<tr>
+								<th>Time</th>
+								<th>Paid</th>
+								<th>Name/Number</th>
+							</tr>
+						</thead>
+						<tbody id="order-list"></tbody>
+					</table>
+				</div>
+				<div class="col-sm-7 right" id="manage">
+				</div>
+			</div>
+		</div>
+	</body>
+	<script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+	<script src="js/scripts.js"></script>
+
+	<script>
+	// Pre-load any orders still open
+	populateOrders();
+
+	// Begin with a fresh, new order
+	newOrder();
+
+	// Add new order button
+	$('#newbut').on('click', function() {
+		newOrder();
+	});
+	</script>
+
+</html>

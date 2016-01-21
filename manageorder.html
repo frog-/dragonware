@@ -1,0 +1,83 @@
+<h1>Manage Order</h1>
+
+<br>
+
+<table class="table" id="manage-table">
+	<thead>
+		<th colspan="2"></th>
+	</thead>
+	<tbody>
+	<tr>
+		<td id="customerName"></td>
+		<td id="customerNumber"></td>
+	</tr>
+	<tr>
+		<td id="orderType"></td>
+		<td id="customerAddr"></td>
+	</tr>
+	<tr>
+		<td id="notes"></td>
+		<td id="edit-button">
+			<button class="btn btn-warning pull-right">Update customer info</button>
+		</td>
+	</tr>	
+	</tbody>
+</table>
+
+<br><br>
+
+<button id="change-paid" class="btn btn-default">Change paid status</button>
+<button class="btn btn-warning pull-right">Review and modify order</button>
+
+<br><br><br><br><br>
+
+<button id="complete" class="btn btn-success">Complete order</button>
+<button id="cancel" class="btn btn-danger pull-right">Cancel order</button>
+
+<script>
+// Add change paid status button
+$('#change-paid').on('click', function() {
+	var oid = $('#manage-table').attr("order");
+	var response = confirm("Change order status?");
+	if (response == true) {
+		$.get("status.php?changetype=paid&oid=" + oid, function(data) {
+			if (data != "") {
+				alert(data);
+			}
+		});
+		populateOrders();
+		newOrder();
+	}
+});
+
+// Add cancel order button
+$('#cancel').on('click', function() {
+	var oid = $('#manage-table').attr("order");
+	var response = confirm("Are you SURE you want to cancel this order?");
+	if (response == true) {
+		$.get("status.php?changetype=cancel&oid=" + oid, function(data) {
+			if (data != "") {
+				alert(data);
+			}
+		});
+		populateOrders();
+		newOrder();
+	}
+});
+
+// Add complete order button
+$('#complete').on('click', function() {
+	var oid = $('#manage-table').attr("order");
+	var response = confirm("Are you SURE you want to complete this order?");
+	if (response == true) {
+		$.get("status.php?changetype=complete&oid=" + oid, function(data) {
+			if (data != "") {
+				alert(data);
+			}
+		});
+		populateOrders();
+		newOrder();
+	}
+});
+
+</script>
