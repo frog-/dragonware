@@ -167,7 +167,7 @@ function completeOrder(paid) {
 function populateOrders() {
 	// Query for all open orders
 	$orders = $('#order-list');
-	$orders.load('persist.php?findopen=true');
+	$orders.load('poll.php?findopen=true');
 
 	// After loading, make each row clickable
 	setTimeout(function() {
@@ -198,7 +198,7 @@ function newOrder() {
 function manage(oid) {
 	$('#manage').load('manageorder.html');
 	setTimeout(function() {
-		$('#manage-table tbody').load("persist.php?manage=true&oid=" + oid);
+		$('#manage-table tbody').load("poll.php?manage=true&oid=" + oid);
 		$('#manage-table').attr('order', oid);
 	}, 10);
 }

@@ -4,11 +4,12 @@ Critical functionality:
 	- Edit customer info/Paid status
 	- Review and Modify order
 	x Complete or cancel order
-- Add notes to items
 - Sanitization and validation
-- Review completed/cancelled orders
+- Refactor all dat shit
 
 Advanced features:
+- Review completed/cancelled orders
+- Add notes to items
 - Sales analysis
 - DB management
 
@@ -16,4 +17,3 @@ Advanced features:
 **BUGS
 	Clicking "no open orders" opens an empty order in management
 	Submitting a new order does not automatically refresh the page
-	Submitted orders miss the phone number
